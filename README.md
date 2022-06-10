@@ -118,7 +118,7 @@ for the sequential blocks. In addition, the proposed network has the advantage o
 comparatively few numbers of filters per layer and the use of group convolution. Experimental results demonstrate 
 that the proposed method is superior to the state-of-the-art methods, especially in terms of time performance.
 
-[[Paper]](https://arxiv.org/pdf/1803.09454v1.pdf)
+[[Paper]](https://arxiv.org/pdf/1803.09454v1.pdf) [[Author's implements(Caffe)]](https://github.com/Zheng222/IDN-Caffe)
 
 ```bibtex
 @inproceedings{Hui-IDN-2018,
