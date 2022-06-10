@@ -74,21 +74,21 @@ In the following table, the psnr value in `()` indicates the result of the proje
 ```bash
 # Download `IDN_x2-TB291-2096ee7f.pth.tar` weights to `./results/pretrained_models`
 # More detail see `README.md<Download weights>`
-python ./inference.py --inputs_path ./figure/comic_lr.png --output_path ./figure/comic_sr.png --weights_path ./results/pretrained_models/IDN_x2-TB291-2096ee7f.pth.tar
+python ./inference.py --inputs_path ./figure/barbara_lr.png --output_path ./figure/barbara_sr.png --weights_path ./results/pretrained_models/IDN_x2-TB291-2096ee7f.pth.tar
 ```
 
 Input:
 
-<span align="center"><img width="240" height="360" src="figure/comic_lr.png"/></span>
+<span align="center"><img width="720" height="576" src="figure/barbara_lr.png"/></span>
 
 Output:
 
-<span align="center"><img width="240" height="360" src="figure/comic_sr.png"/></span>
+<span align="center"><img width="720" height="576" src="figure/barbara_sr.png"/></span>
 
 ```text
 Build IDN model successfully.
 Load IDN model weights `./results/pretrained_models/IDN_x2-TB291-c71a4860.pth.tar` successfully.
-SR image save to `./figure/comic_sr.png`
+SR image save to `./figure/barbara_sr.png`
 ```
 
 ## Contributing
