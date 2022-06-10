@@ -1,14 +1,14 @@
-# CARN-PyTorch
+# IDN-PyTorch
 
 ## Overview
 
 This repository contains an op-for-op PyTorch reimplementation
-of [Fast, Accurate, and Lightweight Super-Resolution with Cascading Residual Network](https://arxiv.org/abs/1803.08664v5)
+of [Fast and Accurate Single Image Super-Resolution via Information Distillation Network](https://arxiv.org/abs/1803.09454v1)
 .
 
 ## Table of contents
 
-- [CARN-PyTorch](#carn-pytorch)
+- [IDN-PyTorch](#idn-pytorch)
     - [Overview](#overview)
     - [Table of contents](#table-of-contents)
     - [Download weights](#download-weights)
@@ -20,7 +20,7 @@ of [Fast, Accurate, and Lightweight Super-Resolution with Cascading Residual Net
     - [Result](#result)
     - [Contributing](#contributing)
     - [Credit](#credit)
-        - [Fast, Accurate, and Lightweight Super-Resolution with Cascading Residual Network](#fast-accurate-and-lightweight-super-resolution-with-cascading-residual-network)
+        - [Fast and Accurate Single Image Super-Resolution via Information Distillation Network](#fast-and-accurate-single-image-super-resolution-via-information-distillation-network)
 
 ## Download weights
 
@@ -44,37 +44,37 @@ Both training and testing only need to modify the `config.py` file.
 
 - line 31: `upscale_factor` change to `2`.
 - line 33: `mode` change to `test`.
-- line 70: `model_path` change to `results/pretrained_models/CARN_x2-DIV2K-2096ee7f.pth.tar`.
+- line 70: `model_path` change to `results/pretrained_models/IDN_x2-TB291-2096ee7f.pth.tar`.
 
 ### Train model
 
 - line 31: `upscale_factor` change to `2`.
 - line 33: `mode` change to `train`.
-- line 35: `exp_name` change to `CARN_x2`.
+- line 35: `exp_name` change to `IDN_x2`.
 
 ### Resume train model
 
 - line 31: `upscale_factor` change to `2`.
 - line 33: `mode` change to `train`.
-- line 35: `exp_name` change to `CARN_x2`.
-- line 48: `resume` change to `samples/CARN_x2/epoch_xxx.pth.tar`.
+- line 35: `exp_name` change to `IDN_x2`.
+- line 48: `resume` change to `samples/IDN_x2/epoch_xxx.pth.tar`.
 
 ## Result
 
-Source of original paper results: [https://arxiv.org/pdf/1803.08664v5.pdf](https://arxiv.org/pdf/1803.08664v5.pdf)
+Source of original paper results: [https://arxiv.org/pdf/1803.09454v1.pdf](https://arxiv.org/pdf/1803.09454v1.pdf)
 
 In the following table, the psnr value in `()` indicates the result of the project, and `-` indicates no test.
 
-|  Method  | Scale |          Set5 (PSNR/SSIM)           |          Set14 (PSNR/SSIM)          |         BSD100 (PSNR/SSIM)          |        Urban100 (PSNR/SSIM)         |
-|:--------:|:-----:|:-----------------------------------:|:-----------------------------------:|:-----------------------------------:|:-----------------------------------:|
-|   CARN   |   2   | 37.76(**38.17**)/0.9590(**0.9618**) | 33.52(**33.83**)/0.9166(**0.9204**) | 32.09(**32.27**)/0.8978(**0.9017**) | 31.92(**32.64**)/0.9256(**0.9332**) |
-|   CARN   |   3   | 34.29(**34.50**)/0.9255(**0.9287**) | 30.29(**30.29**)/0.8407(**0.8415**) | 29.06(**29.09**)/0.8034(**0.8066**) | 28.06(**28.29**)/0.8493(**0.8557**) |
-|   CARN   |   4   | 32.13(**32.36**)/0.8937(**0.8979**) | 28.60(**28.65**)/0.7806(**0.7836**) | 27.58(**27.61**)/0.7349(**0.7388**) | 26.07(**26.31**)/0.7837(**0.7929**) |
+| Method  | Scale |      Set5 (PSNR/SSIM)      |     Set14 (PSNR/SSIM)      |     BSD100 (PSNR/SSIM)     |    Urban100 (PSNR/SSIM)    |
+|:-------:|:-----:|:--------------------------:|:--------------------------:|:--------------------------:|:--------------------------:|
+|   IDN   |   2   | 37.83(**-**)/0.9600(**-**) | 33.30(**-**)/0.9148(**-**) | 32.08(**-**)/0.8985(**-**) | 31.27(**-**)/0.9196(**-**) |
+|   IDN   |   3   | 34.11(**-**)/0.9253(**-**) | 29.99(**-**)/0.8354(**-**) | 28.95(**-**)/0.8013(**-**) | 27.42(**-**)/0.8359(**-**) |
+|   IDN   |   4   | 31.82(**-**)/0.8903(**-**) | 28.25(**-**)/0.7730(**-**) | 27.41(**-**)/0.7297(**-**) | 25.41(**-**)/0.7632(**-**) |
 
 ```bash
-# Download `CARN_x2-DIV2K-2096ee7f.pth.tar` weights to `./results/pretrained_models`
+# Download `IDN_x2-TB291-2096ee7f.pth.tar` weights to `./results/pretrained_models`
 # More detail see `README.md<Download weights>`
-python ./inference.py --inputs_path ./figure/comic_lr.png --output_path ./figure/comic_sr.png --weights_path ./results/pretrained_models/CARN_x2-DIV2K-2096ee7f.pth.tar
+python ./inference.py --inputs_path ./figure/comic_lr.png --output_path ./figure/comic_sr.png --weights_path ./results/pretrained_models/IDN_x2-TB291-2096ee7f.pth.tar
 ```
 
 Input:
@@ -86,8 +86,8 @@ Output:
 <span align="center"><img width="240" height="360" src="figure/comic_sr.png"/></span>
 
 ```text
-Build SRGAN model successfully.
-Load SRGAN model weights `./results/pretrained_models/SRGAN_x4-ImageNet-c71a4860.pth.tar` successfully.
+Build IDN model successfully.
+Load IDN model weights `./results/pretrained_models/IDN_x2-TB291-c71a4860.pth.tar` successfully.
 SR image save to `./figure/comic_sr.png`
 ```
 
@@ -100,30 +100,32 @@ I look forward to seeing what the community does with these models!
 
 ## Credit
 
-### Fast, Accurate, and Lightweight Super-Resolution with Cascading Residual Network
+### Fast and Accurate Single Image Super-Resolution via Information Distillation Network
 
-_Namhyuk Ahn, Byungkon Kang, Kyung-Ah Sohn_ <br>
+_Zheng Hui, Xiumei Wang, Xinbo Gao_ <br>
 
 **Abstract** <br>
-. In recent years, deep learning methods have been successfully applied to single-image super-resolution tasks. Despite
-their great performances, deep learning methods cannot be easily applied to realworld applications due to the
-requirement of heavy computation. In this paper, we address this issue by proposing an accurate and lightweight deep
-network for image super-resolution. In detail, we design an architecture that implements a cascading mechanism upon a
-residual network. We also present variant models of the proposed cascading residual network to further improve
-efficiency. Our extensive experiments show that even with much fewer parameters and operations, our models achieve
-performance comparable to that of state-of-the-art methods.
+Recently, deep convolutional neural networks (CNNs) have been demonstrated remarkable progress on single 
+image super-resolution. However, as the depth and width of the networks increase, CNN-based super-resolution 
+methods have been faced with the challenges of computational complexity and memory consumption in practice. 
+In order to solve the above questions, we propose a deep but compact convolutional network to directly reconstruct
+the high resolution image from the original low resolution image. In general, the proposed model consists 
+of three parts, which are feature extraction block, stacked information distillation blocks and reconstruction 
+block respectively. By combining an enhancement unit with a compression unit into a distillation block, 
+the local long and short-path features can be effectively extracted. Specifically, the proposed enhancement 
+unit mixes together two different types of features and the compression unit distills more useful information 
+for the sequential blocks. In addition, the proposed network has the advantage of fast execution due to the 
+comparatively few numbers of filters per layer and the use of group convolution. Experimental results demonstrate 
+that the proposed method is superior to the state-of-the-art methods, especially in terms of time performance.
 
-[[Paper]](https://arxiv.org/pdf/1803.08664v5.pdf)
+[[Paper]](https://arxiv.org/pdf/1803.09454v1.pdf)
 
 ```bibtex
-@article{DBLP:journals/corr/abs-1803-08664,
-  author    = {Namhyuk Ahn and
-               Byungkon Kang and
-               Kyung{-}Ah Sohn},
-  title     = {Fast, Accurate, and, Lightweight Super-Resolution with Cascading Residual
-               Network},
-  journal   = {CoRR},
-  volume    = {abs/1803.08664},
-  year      = {2018}
+@inproceedings{Hui-IDN-2018,
+  title={Fast and Accurate Single Image Super-Resolution via Information Distillation Network},
+  author={Hui, Zheng and Wang, Xiumei and Gao, Xinbo},
+  booktitle={CVPR},
+  pages = {723--731},
+  year={2018}
 }
 ```

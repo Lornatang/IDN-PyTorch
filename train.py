@@ -154,15 +154,15 @@ def build_model() -> nn.Module:
     return model
 
 
-def define_loss() -> nn.L1Loss:
-    criterion = nn.L1Loss()
+def define_loss() -> nn.MSELoss:
+    criterion = nn.MSELoss()
     criterion = criterion.to(device=config.device, memory_format=torch.channels_last)
 
     return criterion
 
 
 def define_optimizer(model) -> optim.Adam:
-    optimizer = optim.Adam(model.parameters(), config.model_lr, config.model_betas)
+    optimizer = optim.Adam(model.parameters(), config.model_lr, config.model_betas, weight_decay=config.model_weight_decay)
 
     return optimizer
 
@@ -175,7 +175,7 @@ def define_scheduler(optimizer: optim.Adam) -> lr_scheduler.MultiStepLR:
 
 def train(model: nn.Module,
           train_prefetcher: CUDAPrefetcher,
-          criterion: nn.L1Loss,
+          criterion: nn.MSELoss,
           optimizer: optim.Adam,
           epoch: int,
           scaler: amp.GradScaler,
@@ -185,7 +185,7 @@ def train(model: nn.Module,
     Args:
         model (nn.Module): the generator model in the generative network
         train_prefetcher (CUDAPrefetcher): training dataset iterator
-        criterion (nn.L1Loss): Calculate the pixel difference between real and fake samples
+        criterion (nn.MSELoss): Calculate the pixel difference between real and fake samples
         optimizer (optim.Adam): optimizer for optimizing generator models in generative networks
         epoch (int): number of training epochs during training the generative network
         scaler (amp.GradScaler): Mixed precision training function
