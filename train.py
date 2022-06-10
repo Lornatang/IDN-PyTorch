@@ -157,8 +157,8 @@ def build_model() -> nn.Module:
     return model
 
 
-def define_loss() -> nn.MSELoss:
-    criterion = nn.MSELoss()
+def define_loss() -> nn.L1Loss:
+    criterion = nn.L1Loss()
     criterion = criterion.to(device=config.device, memory_format=torch.channels_last)
 
     return criterion
@@ -188,7 +188,7 @@ def train(model: nn.Module,
     Args:
         model (nn.Module): the generator model in the generative network
         train_prefetcher (CUDAPrefetcher): training dataset iterator
-        criterion (nn.MSELoss): Calculate the pixel difference between real and fake samples
+        criterion (nn.L1Loss): Calculate the pixel difference between real and fake samples
         optimizer (optim.Adam): optimizer for optimizing generator models in generative networks
         epoch (int): number of training epochs during training the generative network
         scaler (amp.GradScaler): Mixed precision training function
