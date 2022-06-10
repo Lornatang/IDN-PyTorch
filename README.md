@@ -44,7 +44,7 @@ Both training and testing only need to modify the `config.py` file.
 
 - line 31: `upscale_factor` change to `2`.
 - line 33: `mode` change to `test`.
-- line 70: `model_path` change to `results/pretrained_models/IDN_x2-TB291-2096ee7f.pth.tar`.
+- line 70: `model_path` change to `results/pretrained_models/IDN_x2-TB291-c21dcaa0.pth.tar`.
 
 ### Train model
 
@@ -65,16 +65,16 @@ Source of original paper results: [https://arxiv.org/pdf/1803.09454v1.pdf](https
 
 In the following table, the psnr value in `()` indicates the result of the project, and `-` indicates no test.
 
-| Method  | Scale |      Set5 (PSNR/SSIM)      |     Set14 (PSNR/SSIM)      |     BSD100 (PSNR/SSIM)     |    Urban100 (PSNR/SSIM)    |
-|:-------:|:-----:|:--------------------------:|:--------------------------:|:--------------------------:|:--------------------------:|
-|   IDN   |   2   | 37.83(**-**)/0.9600(**-**) | 33.30(**-**)/0.9148(**-**) | 32.08(**-**)/0.8985(**-**) | 31.27(**-**)/0.9196(**-**) |
-|   IDN   |   3   | 34.11(**-**)/0.9253(**-**) | 29.99(**-**)/0.8354(**-**) | 28.95(**-**)/0.8013(**-**) | 27.42(**-**)/0.8359(**-**) |
-|   IDN   |   4   | 31.82(**-**)/0.8903(**-**) | 28.25(**-**)/0.7730(**-**) | 27.41(**-**)/0.7297(**-**) | 25.41(**-**)/0.7632(**-**) |
+| Method | Scale |          Set5 (PSNR/SSIM)           |          Set14 (PSNR/SSIM)          |         BSD100 (PSNR/SSIM)          |        Urban100 (PSNR/SSIM)         |
+|:------:|:-----:|:-----------------------------------:|:-----------------------------------:|:-----------------------------------:|:-----------------------------------:|
+|  IDN   |   2   | 37.83(**37.59**)/0.9600(**0.9598**) | 33.30(**33.00**)/0.9148(**0.9135**) | 32.08(**31.91**)/0.8985(**0.8974**) | 31.27(**30.68**)/0.9196(**0.9138**) |
+|  IDN   |   3   |     34.11(**-**)/0.9253(**-**)      |     29.99(**-**)/0.8354(**-**)      |     28.95(**-**)/0.8013(**-**)      |     27.42(**-**)/0.8359(**-**)      |
+|  IDN   |   4   |     31.82(**-**)/0.8903(**-**)      |     28.25(**-**)/0.7730(**-**)      |     27.41(**-**)/0.7297(**-**)      |     25.41(**-**)/0.7632(**-**)      |
 
 ```bash
-# Download `IDN_x2-TB291-2096ee7f.pth.tar` weights to `./results/pretrained_models`
+# Download `IDN_x2-TB291-c21dcaa0.pth.tar` weights to `./results/pretrained_models`
 # More detail see `README.md<Download weights>`
-python ./inference.py --inputs_path ./figure/barbara_lr.png --output_path ./figure/barbara_sr.png --weights_path ./results/pretrained_models/IDN_x2-TB291-2096ee7f.pth.tar
+python ./inference.py --inputs_path ./figure/barbara_lr.png --output_path ./figure/barbara_sr.png --weights_path ./results/pretrained_models/IDN_x2-TB291-c21dcaa0.pth.tar
 ```
 
 Input:
@@ -87,7 +87,7 @@ Output:
 
 ```text
 Build IDN model successfully.
-Load IDN model weights `./results/pretrained_models/IDN_x2-TB291-c71a4860.pth.tar` successfully.
+Load IDN model weights `./results/pretrained_models/IDN_x2-TB291-c21dcaa0.pth.tar` successfully.
 SR image save to `./figure/barbara_sr.png`
 ```
 
